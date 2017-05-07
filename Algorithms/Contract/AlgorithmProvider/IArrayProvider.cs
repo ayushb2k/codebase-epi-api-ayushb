@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Algorithms
+namespace Contract.AlgorithmProvider
 {
-    public interface IAlgorithmsProvider
+    public interface IArrayProvider
     {
-        void DoSomthing();
+        void DoSomething();
     }
 }
