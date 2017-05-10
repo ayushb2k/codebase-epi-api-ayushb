@@ -54,6 +54,10 @@
       <Project>{bf4c01e5-c573-4665-903d-1b9e8c65cea4}</Project>
       <Name>Algorithms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Contract\Contract.csproj">
+      <Project>{ab26e728-9d04-436f-b695-6226a8285a2b}</Project>
+      <Name>Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
