@@ -1,5 +1,6 @@
 ﻿using Algorithms.AlgorithmProvider;
 using Contract.AlgorithmProvider;
+using Contract.Type;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace AlgorithmCommandLine
     class Program
     {
         static IArrayProvider arrayProvider;
+        static ILinkedListProvider llProvider;
         static void Main(string[] args)
         {
             arrayProvider = new ArrayProvider();
-            TestCanReach();
+            llProvider = new LinkedListProvider();
+            TestReverse();
         }
 
         private static void TestDutchFlagProblem()
@@ -59,6 +62,40 @@ namespace AlgorithmCommandLine
             var result = arrayProvider.CanReachBoardGame(test);
 
             Console.WriteLine(result.ToString());            
+        }
+
+        private static void TestMergeList()
+        {
+            LinkedList a = new LinkedList();
+            LinkedList b = new LinkedList();
+
+            a.AppendList(new List<int>() { 2, 2,2, 5, 7 });
+            b.AppendList(new List<int>() { 2,2, 3, 11 });
+
+            a.PrintAllNodes();
+            Console.WriteLine();
+            b.PrintAllNodes();
+
+            var result = llProvider.MergeTwoSortedLists(a.GetHead(), b.GetHead());
+            LinkedList c = new LinkedList(result);
+            c.PrintAllNodes();
+
+            //Console.WriteLine(result.ToString());
+        }
+
+        private static void TestReverse()
+        {
+            LinkedList a = new LinkedList();
+            
+            a.AppendList(new List<int>() { 1,2, 3, 3, 5, 7 });
+            
+            a.PrintAllNodes();
+
+            llProvider.ReverseLinkedList(a);
+            
+            a.PrintAllNodes();
+
+            //Console.WriteLine(result.ToString());
         }
     }
 }
