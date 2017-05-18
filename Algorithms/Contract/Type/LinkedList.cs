@@ -102,5 +102,49 @@ namespace Contract.Type
             }
             this.Head = newHead;
         }
+
+        public Node IsCycleAndReturnNode()
+        {
+            Node fast = this.Head;
+            Node slow = this.Head;
+
+            while (fast != null && fast.Next != null && fast.Next.Next != null)
+            {
+                fast = fast.Next.Next;
+                slow = slow.Next;
+                if (slow == fast)
+                {
+                    //there is a cycle since the 2 pointers currently equal
+                    int cycleLength = 0;
+                    do
+                    {
+                        cycleLength++;
+                        fast = fast.Next;
+                    } while (slow != fast);
+
+
+                    //now find the start of cycle.
+                    //to do that first create a new head .. move it forward by cycle length.
+                    //then start the 2 back head and fwd head 1 by 1. 
+                    Node fwdHead = this.Head;
+                    while (cycleLength > 0)
+                    {
+                        fwdHead = fwdHead.Next;
+                    }
+
+                    Node bckHead = this.Head;
+                    while (bckHead != fwdHead)
+                    {
+                        bckHead = bckHead.Next;
+                        fwdHead = fwdHead.Next;
+                    }
+                    return bckHead;
+                   
+
+                }
+            }
+
+            return null; 
+        }
     }
 }

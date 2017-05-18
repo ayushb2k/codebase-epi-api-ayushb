@@ -17,7 +17,7 @@ namespace AlgorithmCommandLine
         {
             arrayProvider = new ArrayProvider();
             llProvider = new LinkedListProvider();
-            TestReverse();
+            TreeGenerate();
         }
 
         private static void TestDutchFlagProblem()
@@ -96,6 +96,44 @@ namespace AlgorithmCommandLine
             a.PrintAllNodes();
 
             //Console.WriteLine(result.ToString());
+        }
+
+        private static void TreeGenerate()
+        {
+            //left sub tree
+            TreeNode d = new TreeNode("D");
+            TreeNode e = new TreeNode("E");
+            TreeNode c = new TreeNode(d, e,"C");
+            TreeNode h = new TreeNode("H");
+            TreeNode g = new TreeNode(h, "G");
+            TreeNode f = new TreeNode(g, "F", false);
+            TreeNode b = new TreeNode(c, f, "B");
+
+            //right sub tree
+            TreeNode m = new TreeNode("M");
+            TreeNode l = new TreeNode(m, "L", false);
+            TreeNode n = new TreeNode("N");
+            TreeNode k = new TreeNode(l,n, "K");
+            TreeNode j = new TreeNode(k, "J", false);
+            TreeNode p = new TreeNode("P");
+            TreeNode o = new TreeNode(p, "O", false);
+            TreeNode i = new TreeNode(j, o, "I");
+
+            TreeNode a = new TreeNode(b,i,"A");
+
+            Tree root = new Tree(a);
+            root.InOrderRecursive(a);
+            Console.WriteLine();
+            root.InOrderIterative();
+            Console.WriteLine();
+            root.PreOrderIterative();
+            Console.WriteLine();
+            root.PreOrderRecursive(a);
+            Console.WriteLine();
+            root.PostOrderIterative();
+            Console.WriteLine();
+            root.PostOrderRecursive(a);
+            
         }
     }
 }

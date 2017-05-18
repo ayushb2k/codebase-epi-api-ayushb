@@ -42,9 +42,12 @@
   <ItemGroup>
     <Compile Include="AlgorithmProvider\IArrayProvider.cs" />
     <Compile Include="AlgorithmProvider\ILinkedListProvider.cs" />
+    <Compile Include="AlgorithmProvider\ITreeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Type\LinkedList.cs" />
     <Compile Include="Type\Node.cs" />
+    <Compile Include="Type\Tree.cs" />
+    <Compile Include="Type\TreeNode.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

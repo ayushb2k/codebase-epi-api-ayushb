@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AlgorithmProvider\ArrayProvider.cs" />
     <Compile Include="AlgorithmProvider\LinkedListProvider.cs" />
+    <Compile Include="AlgorithmProvider\TreeProvider.cs" />
     <Compile Include="Helpers\AlgoHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
