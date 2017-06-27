@@ -152,5 +152,102 @@ namespace Contract.Type
 
             } while (stack.Any());
         }
+
+        public bool IsBalanced()
+        {
+            return IsBalancedHelper(this.Root).Key;
+        }
+
+        private KeyValuePair<bool, int> IsBalancedHelper(TreeNode node)
+        {
+            if (node == null)            
+            {
+                return new KeyValuePair<bool, int>(true, -1);
+            }
+
+            KeyValuePair<bool, int> leftResult = IsBalancedHelper(node.Left);
+            if (!leftResult.Key)
+                return new KeyValuePair<bool, int>(false, 0);
+
+            KeyValuePair<bool, int> rightResult = IsBalancedHelper(node.Right);
+            if (!rightResult.Key)
+                return new KeyValuePair<bool, int>(false, 0);
+
+
+            bool isBalanced = Convert.ToInt32(Math.Abs(leftResult.Value - rightResult.Value)) <= 1;
+            int height = Math.Max(leftResult.Value, rightResult.Value) + 1;
+            return new KeyValuePair<bool, int>(isBalanced, height);
+        }
+
+        public bool IsSymmetric()
+        {
+            if (this.Root == null)
+            {
+                return true;
+            }
+            else
+            {
+                return IsSymmetricHelper(this.Root.Left, this.Root.Right);
+            }
+        }
+
+        private bool IsSymmetricHelper(TreeNode left, TreeNode right)
+        {
+            if (left == null && right == null)
+                return true;
+            else if (left != null && right != null)
+                return left.Data == right.Data && IsSymmetricHelper(left.Left, right.Right) && IsSymmetricHelper(left.Right, right.Left);
+            else
+                return false;
+            
+        }
+
+        public TreeNode LCA(TreeNode a, TreeNode b)
+        {
+            return LCAHelper(this.Root, a, b).Value;
+        }
+
+        /// <summary>
+        /// the key is the number of nodes matching either a or b under a node.
+        /// the value is the exact node which has exactly both the matching nodes
+        /// check for nulls, check for left tree and right tree, if either has length of 2 then return that one.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        private KeyValuePair<int, TreeNode> LCAHelper(TreeNode node, TreeNode a, TreeNode b)
+        {
+            if (node == null)
+                return new KeyValuePair<int, TreeNode>(0, null);
+
+            var leftResult = LCAHelper(node.Left, a, b);
+            if (leftResult.Key == 2)
+                return leftResult;
+
+            var rightResult = LCAHelper(node.Right, a, b);
+            if (rightResult.Key == 2)
+                return rightResult;
+
+            var temp = (node == a || node == b) ? 1 : 0;
+            int numOfTargetNode = rightResult.Key + leftResult.Key + temp;
+
+            return new KeyValuePair<int, TreeNode>(numOfTargetNode, numOfTargetNode == 2 ? node : null);
+        }
+
+        public void PopulateNextPointer()
+        {
+            var curr = this.Root;
+            while (curr != null)
+            {
+                PopulateNext(curr);
+                curr = curr.Left;
+            }
+        }
+
+        private void PopulateNext(TreeNode node)
+        {
+
+        }
     }
 }

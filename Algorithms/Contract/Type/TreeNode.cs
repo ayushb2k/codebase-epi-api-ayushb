@@ -12,6 +12,10 @@ namespace Contract.Type
         public TreeNode Right { get; set; }
         public Object Data { get; set; }
 
+        public bool IsLocked { get; set; }
+        public TreeNode Parent { get; set; }
+        public int NumOfLockedNodes { get; set; }
+
         public TreeNode(TreeNode value, Object data, bool isLeft = true)
         {
             this.Left = isLeft ? value : null;

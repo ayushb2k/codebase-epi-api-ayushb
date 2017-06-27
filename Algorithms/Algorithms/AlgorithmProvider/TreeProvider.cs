@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Contract.Type;
 
 namespace Algorithms.AlgorithmProvider
 {
@@ -12,6 +13,16 @@ namespace Algorithms.AlgorithmProvider
         public TreeProvider()
         {
             //init a tree if required.
+        }
+
+        public bool IsBalanced(Tree tree)
+        {
+            return tree.IsBalanced();
+        }
+
+        public bool IsSymmetric(Tree tree)
+        {
+            return tree.IsSymmetric();
         }
     }
 }
